@@ -1,0 +1,15 @@
+{
+    "name": "ryg/poo-interfaces",
+    "authors": [
+        {
+            "name": "Giovanny",
+            "email": "gjavilae@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ejercicios1\\" : "src/"
+        }
+    }
+}
