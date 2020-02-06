@@ -5,9 +5,10 @@ namespace Ejercicios1\Classes;
 use Ejercicios1\Interfaces\IEntidadTransaccion;
 use Ejercicios1\Interfaces\Transactionable;
 use Ejercicios1\Interfaces\ITransaction;
+use Ejercicios1\Classes\Bank;
 
 use DateTime;
-class Transaction  implements ITransaction
+class Transaction implements ITransaction
 {
 
     private $remitente;
@@ -24,15 +25,31 @@ class Transaction  implements ITransaction
 
     private $time = null;
 
-    public function __constructor(IEntidadTransaccion $medio, string $tipo)
-    {
-        $this->setMedio($medio);
+    private $banco;
 
+    public function __constructor(IEntidadTransaccion $medio)   //objeto Banco...
+    {
+        $medio='YOHANNA';
+        $this->setMedio($medio);
         $this->setTipo($tipo);
     }
 
 
+    
+    public function getBanco(){
 
+        return $this->banco;
+    }
+    /**
+     * Set the value of tipo
+     *
+     * @return  self
+     */ 
+    public function setBanco($medio){
+        $this->banco = $medio;
+
+        return $this;
+    }
     /**
      * Get the value of tipo
      */ 
@@ -58,7 +75,7 @@ class Transaction  implements ITransaction
      */ 
     public function getMedio()
     {
-        return $this->medio;
+        return $this->medio;    //retorna OBJETO Banco
     }
 
     /**
@@ -66,9 +83,9 @@ class Transaction  implements ITransaction
      *
      * @return  self
      */ 
-    public function setMedio($medio)
+    public function setMedio(IEntidadTransaccion $medio)
     {
-        $this->medio = $medio;
+        $this->medio = $medio;  //objeto Banco
 
         return $this;
     }
@@ -177,12 +194,18 @@ class Transaction  implements ITransaction
     {
         $this->setTime(new DateTime());
         $this->setTransactionCode( md5( ( new DateTime() )->format('Y-m-d H:i:s') ) );
+        //1- $bak= new Bank($this->getBanco(),'yohanna');
+       // 1- $bak= $bak->getName();
 
         printf(
-            "\nREALIZANDO TRANSACCION DESDE %s A %s POR UN MONTO DE %.2f", 
+            "\nREALIZANDO TRANSACCION DESDE %s A %s POR UN MONTO DE %.2f desde el banco %s", 
             $this->getRemitente()->getNombre().' '.$this->getRemitente()->getApellido(), 
             $this->getReceptor()->getNombre().' '.$this->getReceptor()->getApellido(),
-            $this->getAmount()
+            $this->getAmount(),
+            $this->getMedio() //2- 
+            // 1- $bak
+            
+            
         );
     }
 }

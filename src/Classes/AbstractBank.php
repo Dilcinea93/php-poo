@@ -2,7 +2,9 @@
 
 namespace Ejercicios1\Classes;
 
-abstract class AbstractBank 
+
+use Ejercicios1\Interfaces\IEntidadTransaccion;
+abstract class AbstractBank implements IEntidadTransaccion
 {
 
     private $name;
@@ -34,7 +36,7 @@ abstract class AbstractBank
     {
         $this->name = $name;
 
-        return $this;
+        return $this->name;
     }
 
     /**
@@ -56,4 +58,7 @@ abstract class AbstractBank
 
         return $this;
     }
+    // public function getNombreEntidad() : string {
+    //     return 'BOD';
+    // }
 }
