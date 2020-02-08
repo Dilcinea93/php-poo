@@ -1,0 +1,56 @@
+//$this->transactions. Propiedad Bank->transactions
+
+array(2) {
+  [0]=>
+  object(Ejercicios1\Classes\Transaction)#5 (8) {
+    ["remitente":"Ejercicios1\Classes\Transaction":private]=>
+    object(Ejercicios1\Classes\Persona)#3 (3) {
+      ["cuenta_bancaria":"Ejercicios1\Classes\Persona":private]=>
+      string(10) "0000000000"
+      ["nombre":"Ejercicios1\Classes\Persona":private]=>
+      string(8) "Giovanny"
+      ["apellido":"Ejercicios1\Classes\Persona":private]=>
+      string(5) "Avila"
+    }
+    ["receptor":"Ejercicios1\Classes\Transaction":private]=>
+    object(Ejercicios1\Classes\Persona)#2 (3) {
+      ["cuenta_bancaria":"Ejercicios1\Classes\Persona":private]=>
+      string(10) "0000000001"
+      ["nombre":"Ejercicios1\Classes\Persona":private]=>
+      string(7) "Yohanna"
+      ["apellido":"Ejercicios1\Classes\Persona":private]=>
+      string(7) "Padrino"
+    }
+    ["medio":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["tipo":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["amount":"Ejercicios1\Classes\Transaction":private]=>
+    int(200)
+    ["transactionCode":"Ejercicios1\Classes\Transaction":private]=>
+    string(32) "c5dee75b95f44660843875ff645debb5"
+    ["time":"Ejercicios1\Classes\Transaction":private]=>
+    string(10) "2020-02-07"
+    ["banco":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+  }
+  [1]=>
+  object(Ejercicios1\Classes\Transaction)#6 (8) {
+    ["remitente":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["receptor":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["medio":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["tipo":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["amount":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["transactionCode":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["time":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+    ["banco":"Ejercicios1\Classes\Transaction":private]=>
+    NULL
+  }
+}
