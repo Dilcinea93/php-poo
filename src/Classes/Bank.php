@@ -17,12 +17,14 @@ class Bank extends AbstractBank
     public function transferencia()
     {
        array_push( $this->transactions, new Transaction($this)); 
-       var_dump($this);
+
+        // var_dump($this);
         //mete al array intancias de la clase transaccion, para luego retornar ese array con las transacciones 
        //objeto banco, con nombre y codgo de entidad
 //$this->objeto Bank: propiedad-1: Transactions, 2- name, 3- bank code.
        //$var= new Bank('BoD','0116'); $var->transactions 
 //      var_dump($this);
+
        return $this->transactions[ count( $this->transactions ) - 1 ];
       // return 'asdas';
        //retorna un objeto 
