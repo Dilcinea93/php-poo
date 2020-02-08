@@ -27,7 +27,7 @@ class Transaction implements ITransaction, IEntidadTransaccion
 
     private $banco;
 
-    public function __constructor(IEntidadTransaccion $medio)   //objeto Banco...
+    public function __construct(IEntidadTransaccion $medio)   //objeto Banco...
     {   
         $this->setMedio($medio);
     }
@@ -219,7 +219,7 @@ class Transaction implements ITransaction, IEntidadTransaccion
         //Llamar a getName de abstractBank
         /***********************************/
         /* PORQUE NO ME SIRVEEE?? si le estoy enviando un objeto persona igualito que los demas metodos, que tiene de diferente con getRemitente??.*/
-          $bank= $this->getMedio()->getTransactions();
+          $bank= $this->getMedio()->getName();
           // var_dump($this);
            // var_dump($bank->getCuenta_bancaria()); me dice  Uncaught Error: Call to a member function getCuenta_bancaria() on null (valor de la variable de instancia)
 
