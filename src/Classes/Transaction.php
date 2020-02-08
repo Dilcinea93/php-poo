@@ -8,7 +8,7 @@ use Ejercicios1\Interfaces\ITransaction;
 use Ejercicios1\Classes\Bank;
 
 use DateTime;
-class Transaction implements ITransaction
+class Transaction implements ITransaction, IEntidadTransaccion
 {
 
     private $remitente;
@@ -28,28 +28,28 @@ class Transaction implements ITransaction
     private $banco;
 
     public function __constructor(IEntidadTransaccion $medio)   //objeto Banco...
-    {
-        $medio='YOHANNA';
+    {   
         $this->setMedio($medio);
-        $this->setTipo($tipo);
+    }
+    public function getNombreEntidad() : string {
+        return 'BOD';
     }
 
+    // public function setBanco($medio){
+    //     $this->banco = 'asjdhka';
 
-    
-    public function getBanco(){
+    //     return $this;
+    // }
+    // public function getBanco(){
 
-        return $this->banco;
-    }
+    //     return 'Yohanna';
+    // }
     /**
      * Set the value of tipo
      *
      * @return  self
      */ 
-    public function setBanco($medio){
-        $this->banco = $medio;
-
-        return $this;
-    }
+    
     /**
      * Get the value of tipo
      */ 
@@ -74,8 +74,13 @@ class Transaction implements ITransaction
      * Get the value of medio
      */ 
     public function getMedio()
-    {
-        return $this->medio;    //retorna OBJETO Banco
+    {   
+        //funciona asi... me retorna BOD
+        // $medio= new Bank("BOD", "0116");
+        // $medio= $this->medio->getName();
+        //recibe el nombre en formato string
+        // var_dump($medio);
+        return $this->medio;
     }
 
     /**
@@ -83,13 +88,33 @@ class Transaction implements ITransaction
      *
      * @return  self
      */ 
-    public function setMedio(IEntidadTransaccion $medio)
+    public function setMedio($medio)
     {
         $this->medio = $medio;  //objeto Banco
 
         return $this;
     }
 
+    /**
+     * Get the value of amount
+     */ 
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set the value of amount
+     *
+     * @return  self
+     */ 
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+/************************************************************/
     /**
      * Get the value of receptor
      */ 
@@ -98,6 +123,9 @@ class Transaction implements ITransaction
         return $this->receptor;
     }
 
+    static function getTransactions(){
+
+    }
     /**
      * Set the value of receptor
      *
@@ -105,6 +133,19 @@ class Transaction implements ITransaction
      */ 
     public function setReceptor(Transactionable $receptor)
     {
+        /*
+
+        setReceptor: Objeto. object{ [],[],[]}
+        setMedio: Objeto. Object{[[medio][]],}
+            object(Ejercicios1\Classes\Persona)#2 (3) {
+              ["cuenta_bancaria":"Ejercicios1\Classes\Persona":private]=>
+              string(10) "0000000001"
+              ["nombre":"Ejercicios1\Classes\Persona":private]=>
+              string(7) "Yohanna"
+              ["apellido":"Ejercicios1\Classes\Persona":private]=>
+              string(7) "Padrino"
+            }
+            */
         $this->receptor = $receptor;
 
         return $this;
@@ -126,26 +167,6 @@ class Transaction implements ITransaction
     public function setRemitente(Transactionable $remitente)
     {
         $this->remitente = $remitente;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of amount
-     */ 
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * Set the value of amount
-     *
-     * @return  self
-     */ 
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
 
         return $this;
     }
@@ -194,18 +215,29 @@ class Transaction implements ITransaction
     {
         $this->setTime(new DateTime());
         $this->setTransactionCode( md5( ( new DateTime() )->format('Y-m-d H:i:s') ) );
-        //1- $bak= new Bank($this->getBanco(),'yohanna');
-       // 1- $bak= $bak->getName();
+        //$bak= new Bank($this->getBanco(),'yohanna');
+        //Llamar a getName de abstractBank
+        /***********************************/
+        /* PORQUE NO ME SIRVEEE?? si le estoy enviando un objeto persona igualito que los demas metodos, que tiene de diferente con getRemitente??.*/
+          $bank= $this->getMedio()->getTransactions();
+          // var_dump($this);
+           // var_dump($bank->getCuenta_bancaria()); me dice  Uncaught Error: Call to a member function getCuenta_bancaria() on null (valor de la variable de instancia)
 
+            var_dump($bank);
+            // $bank->transactions me dice que $bank no es un objeto, pero cuando lo imprimo solo dice que si es un objeto..
+            // las propiedades deben ser privadas para no romper el principio de encapsulamiento. Se debe acceder a ellas no asi $bank->transactions  sino con un getter.. Por eso en cada clase un getter debe retornar la variable de instancia de la propiedad que quieras acceder 
+
+
+            //$bank->getName() dice 
+            // Uncaught Error: Call to a member function getName() on null (valor de la variable de instancia medio)
+
+         /*********************************/
         printf(
             "\nREALIZANDO TRANSACCION DESDE %s A %s POR UN MONTO DE %.2f desde el banco %s", 
             $this->getRemitente()->getNombre().' '.$this->getRemitente()->getApellido(), 
             $this->getReceptor()->getNombre().' '.$this->getReceptor()->getApellido(),
             $this->getAmount(),
-            $this->getMedio() //2- 
-            // 1- $bak
-            
-            
+            $bank
         );
     }
 }

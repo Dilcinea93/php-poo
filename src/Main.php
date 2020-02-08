@@ -17,7 +17,7 @@ class Main {
 
         $banco->transferencia()->setRemitente( $remitente )->setReceptor( $receptor )->setAmount( 200 )->send();
         //$banco->setName($banco);//setName::abstractBank
-        $banco->transferencia()->setRemitente( $remitente )->setReceptor( $receptor )->setMedio($banco)->setAmount( 1000 )->send();
+        $banco->transferencia()->setRemitente( $remitente )->setReceptor($receptor )->setMedio($banco)->setAmount( 1000 )->send();
 
         $total = array_reduce( $banco->getTransactions(), function( $count, $obj ) use($receptor){
             if( $obj->getReceptor()->getCuenta_bancaria() == $receptor->getCuenta_bancaria() )
