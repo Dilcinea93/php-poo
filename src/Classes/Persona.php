@@ -9,7 +9,7 @@ class Persona implements Transactionable
 
     private $cuenta_bancaria;
 
-    private $nombre;
+    public $nombre;
 
     private $apellido;
 

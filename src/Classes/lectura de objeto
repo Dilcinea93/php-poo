@@ -1,0 +1,73 @@
+//$this. Objeto Bank
+//tiene 3 propiedades. Transactions (Bank), name (abstractBank), Bankcode (AbstractBank).
+Propiedad transactions: almacena un array que tiene 2 posiciones. En cada una de ellas tiene objetos de la clase Transaction. Este objeto contiene 8 propiedades (la cantidad de propiedades salen entre parentesis), remitente, receptor, medio, tipo, cantidad, transactionCode, time, banco.
+
+La primera propiedad de la clase transaccion (remitente), tambien almacena un objeto de la clase Persona, que tambien tiene propiedades.
+el remitente tiene nombre, apellido, y numero de cuenta.
+La segunda propiedad del objeto transaccion (receptor), tambien tiene otro objeto de la clase Persona que a su vez tiene propiedades. Estas propiedes son nombre, apellido y numero de cuenta.
+La tercera propiedad del objeto Transaction (medio) esta almacenando NULL, al igual que la propiedad TIPO, la propiedad amount almacena un entero, asi igual, al final la propiedad Bank tambien almacena NULL. Ahi finaliza el objeto transaction. 
+
+ahora, el segundo indice del array Transactions (primera propiedad del objeto BANK), contiene la seguna transaccion. un objeto igual al de arriba, con varias propiedades que estan almacenando NULL.
+Finaliza el array Transactions (primera propiedad del objeto BANK), y seguimos con la segunda propiedad del objeto BANK la cual es NAME. Almacena un string, la tercera propiedad del objeto BANK almacena otro string, y aqui termina el objeto de la clase Bank.
+
+object(Ejercicios1\Classes\Bank)#4 (3) {
+  ["transactions":"Ejercicios1\Classes\Bank":private]=>
+  array(2) {
+    [0]=>
+    object(Ejercicios1\Classes\Transaction)#5 (8) {
+      ["remitente":"Ejercicios1\Classes\Transaction":private]=>
+      object(Ejercicios1\Classes\Persona)#3 (3) {
+        ["cuenta_bancaria":"Ejercicios1\Classes\Persona":private]=>
+        string(10) "0000000000"
+        ["nombre":"Ejercicios1\Classes\Persona":private]=>
+        string(8) "Giovanny"
+        ["apellido":"Ejercicios1\Classes\Persona":private]=>
+        string(5) "Avila"
+      }
+      ["receptor":"Ejercicios1\Classes\Transaction":private]=>
+      object(Ejercicios1\Classes\Persona)#2 (3) {
+        ["cuenta_bancaria":"Ejercicios1\Classes\Persona":private]=>
+        string(10) "0000000001"
+        ["nombre":"Ejercicios1\Classes\Persona":private]=>
+        string(7) "Yohanna"
+        ["apellido":"Ejercicios1\Classes\Persona":private]=>
+        string(7) "Padrino"
+      }
+      ["medio":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["tipo":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["amount":"Ejercicios1\Classes\Transaction":private]=>
+      int(200)
+      ["transactionCode":"Ejercicios1\Classes\Transaction":private]=>
+      string(32) "d5c5728aa53dc6b3ca1cb2d867892c5c"
+      ["time":"Ejercicios1\Classes\Transaction":private]=>
+      string(10) "2020-02-07"
+      ["banco":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+    }
+    [1]=>
+    object(Ejercicios1\Classes\Transaction)#6 (8) {
+      ["remitente":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["receptor":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["medio":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["tipo":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["amount":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["transactionCode":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["time":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+      ["banco":"Ejercicios1\Classes\Transaction":private]=>
+      NULL
+    }
+  }
+  ["name":"Ejercicios1\Classes\AbstractBank":private]=>
+  string(3) "BOD"
+  ["bank_code":"Ejercicios1\Classes\AbstractBank":private]=>
+  string(4) "0116"
+}

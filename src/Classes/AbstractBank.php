@@ -7,9 +7,9 @@ use Ejercicios1\Interfaces\IEntidadTransaccion;
 abstract class AbstractBank implements IEntidadTransaccion
 {
 
-    private $name;
+    public $name;
 
-    private $bank_code;
+    public $bank_code;
 
     public function __construct(string $name, string $bank_code)
     {
@@ -18,15 +18,17 @@ abstract class AbstractBank implements IEntidadTransaccion
         $this->setBank_code($bank_code);
     }
 
-
+    public function getNombreEntidad(): string {
+        return $this->getName();
+        //return 'asda';
+    }
     /**
      * Get the value of name
      */ 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
-
     /**
      * Set the value of name
      *
@@ -36,7 +38,7 @@ abstract class AbstractBank implements IEntidadTransaccion
     {
         $this->name = $name;
 
-        return $this->name;
+        return $this;
     }
 
     /**
@@ -58,7 +60,5 @@ abstract class AbstractBank implements IEntidadTransaccion
 
         return $this;
     }
-    // public function getNombreEntidad() : string {
-    //     return 'BOD';
-    // }
+    
 }
