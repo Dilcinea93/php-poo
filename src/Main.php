@@ -24,6 +24,7 @@ class Main {
         $banco->transferencia()->setRemitente($remitente )->setReceptor( $receptor )->//1-seteado como string y pasado al setMedio del objeto Transaction setMedio($nombrebanco)->
         setAmount( 1000 )->send();
 
+
         $total = array_reduce( $banco->getTransactions(), function( $count, $obj ) use($receptor){
             if( $obj->getReceptor()->getCuenta_bancaria() == $receptor->getCuenta_bancaria() )
                 return $count + $obj->getAmount();
