@@ -8,7 +8,7 @@ use Ejercicios1\Interfaces\ITransaction;
 use Ejercicios1\Classes\Bank;
 
 use DateTime;
-class Transaction implements ITransaction, IEntidadTransaccion
+class Transaction implements ITransaction
 {
 
     private $remitente;
@@ -27,12 +27,9 @@ class Transaction implements ITransaction, IEntidadTransaccion
 
     private $banco;
 
-    public function __constructor(IEntidadTransaccion $medio)   //objeto Banco...
+    public function __construct(IEntidadTransaccion $medio)   //objeto Banco...
     {   
         $this->setMedio($medio);
-    }
-    public function getNombreEntidad() : string {
-        return 'BOD';
     }
 
     // public function setBanco($medio){
@@ -88,7 +85,7 @@ class Transaction implements ITransaction, IEntidadTransaccion
      *
      * @return  self
      */ 
-    public function setMedio($medio)
+    public function setMedio(IEntidadTransaccion $medio)
     {
         $this->medio = $medio;  //objeto Banco
 
@@ -123,9 +120,6 @@ class Transaction implements ITransaction, IEntidadTransaccion
         return $this->receptor;
     }
 
-    static function getTransactions(){
-
-    }
     /**
      * Set the value of receptor
      *
@@ -219,11 +213,11 @@ class Transaction implements ITransaction, IEntidadTransaccion
         //Llamar a getName de abstractBank
         /***********************************/
         /* PORQUE NO ME SIRVEEE?? si le estoy enviando un objeto persona igualito que los demas metodos, que tiene de diferente con getRemitente??.*/
-          $bank= $this->getMedio()->getTransactions();
+          $bank= $this->getMedio();
           // var_dump($this);
            // var_dump($bank->getCuenta_bancaria()); me dice  Uncaught Error: Call to a member function getCuenta_bancaria() on null (valor de la variable de instancia)
 
-            var_dump($bank);
+            //($bank);
             // $bank->transactions me dice que $bank no es un objeto, pero cuando lo imprimo solo dice que si es un objeto..
             // las propiedades deben ser privadas para no romper el principio de encapsulamiento. Se debe acceder a ellas no asi $bank->transactions  sino con un getter.. Por eso en cada clase un getter debe retornar la variable de instancia de la propiedad que quieras acceder 
 
@@ -237,7 +231,7 @@ class Transaction implements ITransaction, IEntidadTransaccion
             $this->getRemitente()->getNombre().' '.$this->getRemitente()->getApellido(), 
             $this->getReceptor()->getNombre().' '.$this->getReceptor()->getApellido(),
             $this->getAmount(),
-            $bank
+            $bank->getName()
         );
     }
 }
