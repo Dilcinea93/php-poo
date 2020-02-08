@@ -13,11 +13,11 @@ class Bank extends AbstractBank
     private $transactions = [];//mete aqui una instancia de Transaction 
     //public $name;
 
+    private $tipoTransaccion;
 
     public function transferencia()
     {
        array_push( $this->transactions, new Transaction($this)); 
-       var_dump($this);
         //mete al array intancias de la clase transaccion, para luego retornar ese array con las transacciones 
        //objeto banco, con nombre y codgo de entidad
 //$this->objeto Bank: propiedad-1: Transactions, 2- name, 3- bank code.
@@ -33,5 +33,10 @@ class Bank extends AbstractBank
         return $this->transactions;
     }
     
-
+    public function getTipoTransaccion(){
+      $tipoTransaccion= array('Transferencia','Deposito','Pago Movil Interbancario');
+        $this->tipoTransaccion=$tipoTransaccion;
+        
+        return $this->tipoTransaccion;
+    }
 }

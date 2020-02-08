@@ -3,4 +3,6 @@ require "./vendor/autoload.php";
 
 use Ejercicios1\Main;
 
-Main::run();
+$main= new Main();
+$main->run();
+?>

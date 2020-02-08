@@ -27,10 +27,13 @@ class Transaction implements ITransaction, IEntidadTransaccion
 
     private $banco;
 
+
     public function __construct(IEntidadTransaccion $medio)   //objeto Banco...
     {   
         $this->setMedio($medio);
+        
     }
+    
     public function getNombreEntidad() : string {
         return 'BOD';
     }
@@ -63,10 +66,9 @@ class Transaction implements ITransaction, IEntidadTransaccion
      *
      * @return  self
      */ 
-    public function setTipo($tipo)
+    public function setTipo(string $tipo)
     {
         $this->tipo = $tipo;
-
         return $this;
     }
 
@@ -219,11 +221,9 @@ class Transaction implements ITransaction, IEntidadTransaccion
         //Llamar a getName de abstractBank
         /***********************************/
         /* PORQUE NO ME SIRVEEE?? si le estoy enviando un objeto persona igualito que los demas metodos, que tiene de diferente con getRemitente??.*/
-          $bank= $this->getMedio()->getName();
           // var_dump($this);
            // var_dump($bank->getCuenta_bancaria()); me dice  Uncaught Error: Call to a member function getCuenta_bancaria() on null (valor de la variable de instancia)
 
-            var_dump($bank);
             // $bank->transactions me dice que $bank no es un objeto, pero cuando lo imprimo solo dice que si es un objeto..
             // las propiedades deben ser privadas para no romper el principio de encapsulamiento. Se debe acceder a ellas no asi $bank->transactions  sino con un getter.. Por eso en cada clase un getter debe retornar la variable de instancia de la propiedad que quieras acceder 
 
@@ -232,12 +232,15 @@ class Transaction implements ITransaction, IEntidadTransaccion
             // Uncaught Error: Call to a member function getName() on null (valor de la variable de instancia medio)
 
          /*********************************/
+
+        // var_dump($this->getTipoTransaccion());
         printf(
-            "\nREALIZANDO TRANSACCION DESDE %s A %s POR UN MONTO DE %.2f desde el banco %s", 
+            "\n\n\nREALIZANDO TRANSACCION DESDE %s A %s \n MONTO : %.2f \nbanco: %s\n Tipo de transaccion: %s", 
             $this->getRemitente()->getNombre().' '.$this->getRemitente()->getApellido(), 
             $this->getReceptor()->getNombre().' '.$this->getReceptor()->getApellido(),
             $this->getAmount(),
-            $bank
+            $this->getMedio()->getName(),
+            $this->getTipo()
         );
     }
 }
